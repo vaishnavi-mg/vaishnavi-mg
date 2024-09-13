@@ -1,10 +1,11 @@
-- 👋 Hi, I’m @vaishnavi-mg
-- 👀 I’m interested in romanticising little thingds that make me happy
-- 🌱 I’m currently learning IT 
-- 💞️ I’m looking to collaborate on mobile apps
-- 📫 How to reach me ...
 
-<!---
-vaishnavi-mg/vaishnavi-mg is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+
+Hi, I'm Vaishnavi MG! 👋
+
+Welcome to my GitHub profile! I'm a passionate BTech student with a deep interest in cutting-edge technologies and emerging trends. My journey in tech has led me to explore various domains, and I'm excited to share my work with you.
+
+🚀 About Me
+
+- Current Status: Enthusiastic BTech student
+- Passions: Virtual Reality (VR), Machine Learning (ML), Web Development
+- Goals:To innovate and contribute to the tech community by exploring and mastering new technologies.
