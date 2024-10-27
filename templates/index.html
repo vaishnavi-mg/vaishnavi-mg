@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Claws & Chords</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='bg.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .description {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Claws & Chords</h1>
+        <p class="description">This page is designed to generate music playlists based on your selected mood. Utilizing advanced clustering algorithms and policy gradient reinforcement learning, our service customizes playlists to match your mood seamlessly.</p>
+        <p>Select your preferred mood:</p>
+        <form action="{{ url_for('generate_playlist') }}" method="POST">
+            <select name="cluster" class="select">
+                {% for key, value in moods.items() %}
+                <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="button">Generate Playlist</button>
+        </form>
+    </div>
+</body>
+</html>

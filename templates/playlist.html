@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Playlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='bg1.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .like-button, .back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .like-button:hover, .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .like-button.liked {
+            background-color: red; /* Change background color to red when liked */
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .star {
+            font-size: 24px;
+            color: gray;
+            transition: color 0.3s ease;
+        }
+
+        .star:hover, .star:hover ~ .star {
+            color: gold;
+        }
+
+        .star.rated {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Playlist for {{ mood }} Mood</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Track Name</th>
+                    <th>Artist</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for song in policy_gradient_playlist %}
+                <tr>
+                    <td>{{ song['track_name'] }}</td>
+                    <td>{{ song['artist(s)_name'] }}</td>
+                    <td>
+                        <div class="star-rating" data-song-id="{{ loop.index }}">
+                            <span class="star" data-rating="1" onclick="rateSong(event, {{ loop.index }})">★</span>
+                            <span class="star" data-rating="2" onclick="rateSong(event, {{ loop.index }})">★</span>
+                            <span class="star" data-rating="3" onclick="rateSong(event, {{ loop.index }})">★</span>
+                            <span class="star" data-rating="4" onclick="rateSong(event, {{ loop.index }})">★</span>
+                            <span class="star" data-rating="5" onclick="rateSong(event, {{ loop.index }})">★</span>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="like-button" onclick="likePlaylist()">Like Playlist</button>
+        <a href="{{ url_for('index') }}" class="back-button">Back to Home</a>
+    </div>
+
+    <script>
+        // Store ratings in an array
+        const songRatings = {};
+
+        function rateSong(event, songIndex) {
+            const rating = event.target.getAttribute('data-rating');
+            songRatings[songIndex] = rating; // Store the rating
+
+            const stars = document.querySelectorAll(`.star-rating[data-song-id="${songIndex}"] .star`);
+            stars.forEach((star, index) => {
+                star.classList.toggle('rated', index < rating);
+            });
+            console.log(`Song ${songIndex} rated with ${rating} stars!`);
+        }
+
+        function likePlaylist() {
+            const button = document.querySelector('.like-button');
+            button.classList.toggle('liked');
+            button.innerHTML = button.classList.contains('liked') ? 'Liked!' : 'Like Playlist';
+        }
+    </script>
+</body>
+</html>

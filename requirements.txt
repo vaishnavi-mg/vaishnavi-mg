@@ -1,0 +1,19 @@
+blinker==1.8.2
+click==8.1.7
+colorama==0.4.6
+Flask==3.0.3
+itsdangerous==2.2.0
+Jinja2==3.1.4
+joblib==1.4.2
+MarkupSafe==3.0.2
+numpy==1.23.5    # Use a compatible version
+openpyxl==3.1.2
+pandas==1.5.3    # Updated to a compatible version
+python-dateutil==2.9.0.post0
+pytz==2024.2
+scikit-learn==1.0.2    # Updated to a compatible version
+scipy==1.9.3         # Use a compatible version
+six==1.16.0
+threadpoolctl==3.5.0
+tzdata==2024.2
+Werkzeug==3.0.6
